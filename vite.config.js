@@ -3,10 +3,15 @@ import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
   plugins: [vue()],
+  base: '/',
   server: {
     port: 3000,
     proxy: {
       '/admin': {
+        target: 'http://localhost:9999',
+        changeOrigin: true,
+      },
+      '/user': {
         target: 'http://localhost:9999',
         changeOrigin: true,
       }
